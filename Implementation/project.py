@@ -12,7 +12,7 @@ class student(object):
         s.roll=int(input("Enter roll no "))
         s.name=input("Enter name ")
         s.name=s.name.upper()
-        s.per=float(input("Enter per "))
+        s.per=float(input("Enter percentage "))
         
     def disp_rec(s):
         print("roll ",s.roll)
