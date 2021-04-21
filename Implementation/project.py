@@ -9,10 +9,29 @@ class student(object):
         s.per=0
 
     def add_rec(s):
-        s.roll=int(input("Enter roll no "))
-        s.name=input("Enter name ")
+        while(True):
+            roll=input("Enter roll no ")
+            if(roll.isnumeric()==True):
+                s.roll=int(roll)
+                break
+            else:
+                print("only digits")
+        while(True):
+            name=input("Enter name ")
+            if(name.isalpha()==True):
+                s.name=name
+                break
+            else:
+                print("Only alphabets please....")
         s.name=s.name.upper()
-        s.per=float(input("Enter percentage "))
+        while(True):
+            s.per=float(input("Enter percentage "))
+            if(s.per>100.0):
+                print("enter below 100")
+            else:
+                s.per=round(s.per,2)
+                break
+                
         
     def disp_rec(s):
         print("roll ",s.roll)
