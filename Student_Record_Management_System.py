@@ -10,24 +10,24 @@ class student(object):
 
     def add_rec(s):
         while(True):
-            roll=input("Enter roll no ")
+            roll=input("Enter roll no: ")
             if(roll.isnumeric()==True):
                 s.roll=int(roll)
                 break
             else:
-                print("only digits")
+                print("\nX-------only digits--------X")
         while(True):
-            name=input("Enter name ")
+            name=input("Enter name: ")
             if(name.isalpha()==True):
                 s.name=name
                 break
             else:
-                print("Only alphabets please....")
+                print("\nX---------Only alphabets please-----------X")
         s.name=s.name.upper()
         while(True):
-            s.per=float(input("Enter percentage "))
+            s.per=float(input("Enter percentage: "))
             if(s.per>100.0):
-                print("enter below 100")
+                print("\nX---------enter below 100---------X")
             else:
                 s.per=round(s.per,2)
                 break
@@ -43,10 +43,10 @@ class student(object):
         #print("in display_rec")
         
     def modify_rec(s):
-        s.roll=int(input("Enter new roll no "))
-        s.name=input("Enter new name ")
+        s.roll=int(input("Enter new roll no: "))
+        s.name=input("Enter new name: ")
         s.name=s.name.upper()
-        s.per=float(input("Enter new per "))
+        s.per=float(input("Enter new per: "))
     
 
 
@@ -57,8 +57,8 @@ def write_record():
         rec.add_rec()
         pickle.dump(rec,file)
         file.close()
-        print("Record added in file")
-        input("Press any key to cont ....")
+        print("\nRecord added in file")
+        input("\nPress any key to cont ....")
     except:
         pass
 
@@ -78,18 +78,18 @@ def display_all():
     except EOFError:
         file.close()
         print(40*"=")
-        input("Press any key to cont ....")
+        input("\nPress any key to cont ....")
     except IOError:
-        print("file could not be opened")
+        print("\nfile could not be opened")
         
 def search_roll():
     os.system("cls")
     try:
         z=0
         print(40*"=")
-        print("Record Searching By Roll No")
+        print("\nRecord Searching By Roll No:")
         print(40*"=")
-        n=int(input("Enter roll no search "))
+        n=int(input("\nEnter roll no search "))
         file=open("stud.dat","rb")
         while True:
             rec=pickle.load(file)
@@ -102,17 +102,17 @@ def search_roll():
     except EOFError:
         file.close()
         if(z==0):
-            print("record is not present")
+            print("\nrecord is not present")
         
     except IOError:
-        print("file could not be opened")
-    input("Press any key to cont ....")
+        print("\nfile could not be opened")
+    input("\nPress any key to cont ....")
         
 def search_name():
     os.system("cls")
     try:
         z=0
-        n=input("Enter name to search ")
+        n=input("\nEnter name to search: ")
         file=open("stud.dat","rb")
         while True:
             rec=pickle.load(file)
@@ -124,29 +124,29 @@ def search_name():
     except EOFError:
         file.close()
         if(z==0):
-            print("record is not present")
+            print("\nrecord is not present")
         
     except IOError:
-        print("file could not be opened")   
-    input("Press any key to cont ....")    
+        print("\nfile could not be opened")   
+    input("\nPress any key to cont ....")    
 
 def modify_roll():
     os.system("cls")
     z=0
     try:
-        n=int(input("Enter roll no to modify "))
+        n=int(input("Enter roll no to modify: "))
         file=open("stud.dat","rb")
         temp=open("temp.dat","wb")
         while True:
             rec=pickle.load(file)
             if(rec.roll==n):
                 z=1
-                print("record found and details are")
+                print("\nrecord found and details are: \n")
                 rec.disp_rec()
-                print("Enter new data ")
+                print("\nEnter new data ")
                 rec.modify_rec()
                 pickle.dump(rec,temp)
-                print("Record updated")
+                print("\nRecord updated")
             else:
                 pickle.dump(rec,temp)
 
@@ -154,29 +154,28 @@ def modify_roll():
         file.close()
         temp.close()
         if(z==0):
-            print("Record not found")
+            print("\nRecord not found")
     except IOError:
-        print("File could not be opened")
+        print("\nFile could not be opened")
 
     os.remove("stud.dat")
     os.rename("temp.dat","stud.dat")
-    input("Press any key to cont ....")
+    input("\nPress any key to cont ....")
 
 def delete_roll():
     os.system("cls")
     z=0
     try:
-        n=int(input("Enter roll no to delete "))
+        n=int(input("Enter roll no to delete: "))
         file=open("stud.dat","rb")
         temp=open("temp.dat","wb")
         while True:
             rec=pickle.load(file)
             if(rec.roll==n):
                 z=1
-                print("record to delete found and details are")
+                print("\nrecord to delete found and details are: \n")
                 rec.disp_rec()
-                #pickle.dump(rec,temp)
-                #print("Record updated")
+                print("\nX--------Record updated---------X\n")
             else:
                 pickle.dump(rec,temp)
 
