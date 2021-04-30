@@ -200,7 +200,7 @@ while True:
     print("""            Main Menu
             ---------
 
-           1. Add recod
+           1. Add a record
            2. display all records
            3. search by rollno
            4. search by name
